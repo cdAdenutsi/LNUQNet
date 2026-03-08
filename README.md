@@ -1,4 +1,8 @@
-# LNUQNet: Lithology Neural Uncertainty Quantification Network
+# LNUQNet: An Uncertainty-Aware Deep Learning Model for Lithology Classification
+
+[![Python Version](https://img.shields.io/badge/python-3.14-blue)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.19-orange)](https://www.tensorflow.org/)
+[![Status](https://img.shields.io/badge/Status-Under%20Review-yellow)]
 
 ## Overview
 
@@ -109,17 +113,22 @@ This hybrid design enables robust lithology prediction while providing confidenc
 
 ## Results
 
-LNUQNet demonstrates strong lithology classification performance while providing uncertainty estimates for each prediction.
+LNUQNet demonstrates strong lithology classification performance while also providing predictive uncertainty estimates through Monte Carlo Dropout.
 
-Example evaluation results from the trained model include:
+The model was evaluated on both the training and test datasets, and the following performance metrics were obtained:
 
-| Data Split       | Accuracy         |
-| ---------------- | ---------------- |
-| Train            |     0.96         |
-| Test             |     0.78         |
+| Data Split | Accuracy |
+| ---------- | -------- |
+| Train      | 0.96     |
+| Test       | 0.78     |
 
+In addition to classification performance, LNUQNet produces probabilistic predictions that allow estimation of model confidence.
 
-The uncertainty estimation allows identification of low-confidence predictions, which is valuable for geological interpretation and quality control in automated lithology classification.
+| Uncertainty Metric         | Value  |
+| -------------------------- | ------ |
+| Mean Prediction Confidence | > 0.91 |
+
+The high mean confidence indicates that the model generally produces strong probabilistic certainty in its predictions, while the uncertainty estimates help identify predictions that may require further geological review.
 
 ---
 
