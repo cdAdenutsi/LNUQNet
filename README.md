@@ -73,7 +73,7 @@ Run the notebooks sequentially:
 
 ### RBHS Ground Truth Generation Framework
 
-![RBHS Framework](figures/RBHS.png)
+![RBHS Framework](figures/RBHS_framework.png)
 
 The Rule-Based Hierarchical System (RBHS) is used to generate structured lithology labels from well log measurements. This framework encodes geological domain knowledge through hierarchical decision rules to produce consistent training labels.
 
@@ -81,7 +81,7 @@ The Rule-Based Hierarchical System (RBHS) is used to generate structured litholo
 
 ### CNN Feature Extraction Architecture
 
-![CNN Architecture](figures/Cnn_Architecture.png)
+![CNN Architecture](figures/cnn_architecture.png)
 
 The CNN component extracts local lithological patterns from well log features. Convolutional layers capture spatial relationships within the input feature window.
 
@@ -89,7 +89,7 @@ The CNN component extracts local lithological patterns from well log features. C
 
 ### Depthwise Self-Attention Mechanism
 
-![Depthwise Self Attention](figures/Depth-wise_Self_Attention.png)
+![Depthwise Self Attention](figures/depthwise_self_attention.png)
 
 The transformer-based depthwise self-attention mechanism captures long-range depth dependencies within the well log sequence, enabling the model to learn stratigraphic context.
 
@@ -113,12 +113,11 @@ LNUQNet demonstrates strong lithology classification performance while providing
 
 Example evaluation results from the trained model include:
 
-| Metric           | Value            |
+| Data Split       | Accuracy         |
 | ---------------- | ---------------- |
-| Overall Accuracy | (add from paper) |
-| Precision        | (add from paper) |
-| Recall           | (add from paper) |
-| F1 Score         | (add from paper) |
+| Train            |     0.96         |
+| Test             |     0.78         |
+
 
 The uncertainty estimation allows identification of low-confidence predictions, which is valuable for geological interpretation and quality control in automated lithology classification.
 
