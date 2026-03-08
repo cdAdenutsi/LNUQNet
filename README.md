@@ -7,7 +7,7 @@ The model integrates convolutional neural network (CNN) feature extraction with 
 
 To quantify predictive uncertainty, the framework employs Monte Carlo Dropout during inference, enabling probabilistic lithology predictions that can support more reliable geological interpretation.
 
-This repository contains the code, trained model, and sample dataset used to develop and evaluate LNUQNet.
+This repository contains the code, trained model, and datasets used to develop and evaluate LNUQNet.
 
 ---
 
@@ -17,9 +17,9 @@ LNUQNet/
 
 * notebooks/
 
-  * LNUQNet_1_RBHS.ipynb – Rule-Based Hierarchical System pipeline
-  * LNUQNet_1_Model.ipynb – Model architecture definition and training
-  * LNUQNet_3_Uncertainty Quantification & Plots.ipynb – Prediction, uncertainty estimation, and visualization
+  * LNUQNet_1_RBHS.ipynb – Rule-Based Hierarchical System (RBHS) pipeline for generating ground truth labels
+  * LNUQNet_2_Model.ipynb – Model architecture definition and training
+  * LNUQNet_3_Uncertainty_Quantification_and_Plots.ipynb – Prediction, uncertainty estimation, and visualization
 
 * models/
 
@@ -27,8 +27,14 @@ LNUQNet/
 
 * data/
 
-  * All 12 datasets used.
-    
+  * Contains the 12 datasets used for model development and evaluation
+
+* figures/
+
+  * RBHS_framework.png
+  * cnn_architecture.png
+  * depthwise_self_attention.png
+
 * requirements.txt – Python dependencies required to run the notebooks
 
 ---
@@ -47,19 +53,45 @@ Run the notebooks sequentially:
 
 1. **LNUQNet_1_RBHS.ipynb**
 
-   * Ground Truth Generation
-   * Dataset preparation
+* Ground truth generation using the Rule-Based Hierarchical System (RBHS)
+* Dataset preparation
 
 2. **LNUQNet_2_Model.ipynb**
 
-   * LNUQNet architecture implementation
-   * Model training
+* Implementation of the LNUQNet architecture
+* Model training
 
-3. **LNUQNet_3_Uncertainty Quantification & Plots.ipynb**
+3. **LNUQNet_3_Uncertainty_Quantification_and_Plots.ipynb**
 
-   * Lithology prediction
-   * Monte Carlo dropout uncertainty estimation
-   * Visualization of results
+* Lithology prediction
+* Monte Carlo Dropout uncertainty estimation
+* Visualization of predictions and uncertainty
+
+---
+
+## Model Architecture
+
+### RBHS Ground Truth Generation Framework
+
+![RBHS Framework](figures/RBHS.png)
+
+The Rule-Based Hierarchical System (RBHS) is used to generate structured lithology labels from well log measurements. This framework encodes geological domain knowledge through hierarchical decision rules to produce consistent training labels.
+
+---
+
+### CNN Feature Extraction Architecture
+
+![CNN Architecture](figures/Cnn_Architecture.png)
+
+The CNN component extracts local lithological patterns from well log features. Convolutional layers capture spatial relationships within the input feature window.
+
+---
+
+### Depthwise Self-Attention Mechanism
+
+![Depthwise Self Attention](figures/Depth-wise_Self_Attention.png)
+
+The transformer-based depthwise self-attention mechanism captures long-range depth dependencies within the well log sequence, enabling the model to learn stratigraphic context.
 
 ---
 
@@ -75,9 +107,26 @@ This hybrid design enables robust lithology prediction while providing confidenc
 
 ---
 
+## Results
+
+LNUQNet demonstrates strong lithology classification performance while providing uncertainty estimates for each prediction.
+
+Example evaluation results from the trained model include:
+
+| Metric           | Value            |
+| ---------------- | ---------------- |
+| Overall Accuracy | (add from paper) |
+| Precision        | (add from paper) |
+| Recall           | (add from paper) |
+| F1 Score         | (add from paper) |
+
+The uncertainty estimation allows identification of low-confidence predictions, which is valuable for geological interpretation and quality control in automated lithology classification.
+
+---
+
 ## Data
 
-All datasets have been provided in the data folder.
+All datasets used in the study are provided in the **data/** folder.
 
 ---
 
@@ -96,5 +145,4 @@ To reproduce the results:
 If you use this code in your research, please cite:
 
 Author(s).
-"LNUQNet: An Uncertainty-Aware Deep Learning Model for 
-Lithology Classification"
+"LNUQNet: An Uncertainty-Aware Deep Learning Model for Lithology Classification."
